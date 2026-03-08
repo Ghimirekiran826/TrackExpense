@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker Home</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background-color:#f4f7f3;
+      color:#222;
+    }
+
+    .hero{
+      min-height:100vh;
+      background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+      url("https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      color:white;
+    }
+
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:25px 60px;
+      background:rgba(0,0,0,0.25);
+    }
+
+    .logo{
+      font-size:42px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    .nav-right a{
+      text-decoration:none;
+      background:#9acd32;
+      color:black;
+      padding:12px 28px;
+      border-radius:8px;
+      font-size:20px;
+      font-weight:bold;
+      border:1px solid #6b8e23;
+    }
+
+    .hero-content{
+      width:85%;
+      margin:auto;
+      padding-top:110px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .left{
+      flex:1;
+      min-width:320px;
+    }
+
+    .left h1{
+      font-size:58px;
+      margin-bottom:20px;
+    }
+
+    .left p{
+      font-size:22px;
+      line-height:1.6;
+      margin-bottom:30px;
+      max-width:650px;
+    }
+
+    .buttons a{
+      text-decoration:none;
+      display:inline-block;
+      margin-right:15px;
+      margin-bottom:12px;
+      padding:14px 28px;
+      border-radius:8px;
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    .btn1{
+      background:#9acd32;
+      color:black;
+    }
+
+    .btn2{
+      background:transparent;
+      color:white;
+      border:2px solid white;
+    }
+
+    .right{
+      flex:1;
+      min-width:280px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .login-box{
+      width:360px;
+      background:rgba(255,255,255,0.92);
+      color:#222;
+      padding:30px;
+      border-radius:14px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .login-box h2{
+      text-align:center;
+      margin-bottom:20px;
+      font-size:30px;
+    }
+
+    .login-box input{
+      width:100%;
+      padding:13px;
+      margin-bottom:15px;
+      border:1px solid #bbb;
+      border-radius:7px;
+      font-size:16px;
+    }
+
+    .login-box button{
+      width:100%;
+      padding:13px;
+      background:#2f7d32;
+      color:white;
+      border:none;
+      border-radius:7px;
+      font-size:18px;
+      cursor:pointer;
+      margin-bottom:12px;
+    }
+
+    .login-box p{
+      text-align:center;
+      font-size:15px;
+    }
+
+    .login-box a{
+      color:#2f7d32;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    .features{
+      padding:70px 60px;
+      background:#eef4ea;
+      text-align:center;
+    }
+
+    .features h2{
+      font-size:40px;
+      margin-bottom:15px;
+      color:#1f4d1f;
+    }
+
+    .features p{
+      font-size:18px;
+      margin-bottom:40px;
+      color:#444;
+    }
+
+    .card-container{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .card{
+      width:280px;
+      background:white;
+      padding:30px 20px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#2f7d32;
+      font-size:24px;
+    }
+
+    .card p{
+      font-size:16px;
+      line-height:1.6;
+      color:#555;
+    }
+
+    .about-contact{
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+      padding:60px;
+      background:#dfead8;
+    }
+
+    .box{
+      flex:1;
+      min-width:300px;
+      background:white;
+      border-radius:12px;
+      padding:30px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .box h2{
+      margin-bottom:20px;
+      color:#1f4d1f;
+      font-size:34px;
+    }
+
+    .box p{
+      line-height:1.8;
+      font-size:17px;
+      color:#444;
+    }
+
+    .footer{
+      background:#1f1f1f;
+      color:white;
+      text-align:center;
+      padding:18px;
+      font-size:15px;
+    }
+
+    @media(max-width:900px){
+      .navbar{
+        padding:20px 25px;
+      }
+
+      .logo{
+        font-size:30px;
+      }
+
+      .hero-content{
+        width:90%;
+        padding-top:70px;
+      }
+
+      .left h1{
+        font-size:40px;
+      }
+
+      .left p{
+        font-size:18px;
+      }
+
+      .features,
+      .about-contact{
+        padding:40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="navbar">
+      <div class="logo">Expense Tracker</div>
+      <div class="nav-right">
+        <a href="login.php">Sign In</a>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="left">
+        <h1>Track Your Money Smarter</h1>
+        <p>
+          Manage your daily expenses, watch your spending habits,
+          and stay in control of your budget with a simple and clean expense tracker system.
+        </p>
+        <div class="buttons">
+          <a href="register.php" class="btn1">Get Started</a>
+          <a href="login.php" class="btn2">Login Now</a>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="login-box">
+          <h2>User Login</h2>
+          <form>
+            <input type="text" placeholder="Enter username" required>
+            <input type="password" placeholder="Enter password" required>
+            <button type="submit">Login</button>
+            <p>Don’t have an account? <a href="register.php">Register</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Why Use This System?</h2>
+    <p>Everything you need to manage expenses in one place.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>Add Expenses</h3>
+        <p>Save your daily, weekly, or monthly expenses easily with category and amount details.</p>
+      </div>
+
+      <div class="card">
+        <h3>View Reports</h3>
+        <p>Check all your spending records and understand where your money is going.</p>
+      </div>
+
+      <div class="card">
+        <h3>Stay Organized</h3>
+        <p>Keep your financial records neat, clear, and easy to access anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contact">
+    <div class="box">
+      <h2>About Us</h2>
+      <p>
+        Expense Tracker is a simple web-based system made to help users record,
+        manage, and review their expenses. It is useful for students, families,
+        and anyone who wants better control over their spending.
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>Contact Us</h2>
+      <p>
+        Email: support@expensetracker.com<br>
+        Phone: +46 123 456 789<br>
+        Address: Stockholm, Sweden
+      </p>
+    </div>
+  </section>
+
+  <div class="footer">
+    © 2026 Expense Tracker. All rights reserved.
+  </div>
+
+</body>
+</html>
